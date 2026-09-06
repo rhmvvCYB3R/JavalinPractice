@@ -38,5 +38,16 @@ public class BookRepository {
         books.add(book);
     }
 
+    public List <Book> deleteById(int id){
+        for(Book book:books){
+            if(book.getId() == id){
+                books.remove(book);
+                return books;
+
+            }
+        }
+        return null;
+    }
+
 
 }

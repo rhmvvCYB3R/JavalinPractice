@@ -41,5 +41,23 @@ public class BookController {
 
     }
 
+    public void postBook(Context ctx){
+        Book newBook = ctx.bodyAsClass(Book.class);
+        repository.addBook(newBook);
+        ctx.json(newBook).status(201);
+    }
+
+    public void deleteBook(Context ctx){
+        String idPars = ctx.pathParam("id");
+        int id = Integer.parseInt(idPars);
+       List <Book> books = repository.deleteById(id);
+       if(books!=null){
+           ctx.json(books).status(200);
+       }else {
+           ctx.result("Not Found!").status(404);
+
+       }
+    }
+
 
 }

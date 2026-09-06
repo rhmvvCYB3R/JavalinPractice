@@ -6,7 +6,9 @@ public class Book {
     private String name;
 
     private static final AtomicInteger counter = new AtomicInteger(0);
-
+    public Book(){
+        this.id = counter.incrementAndGet();
+    }
 
 
     public Book(String author,String name){
