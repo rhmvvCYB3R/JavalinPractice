@@ -10,13 +10,16 @@ public class Main {
 
        BookRepository repository = new BookRepository();
        repository.addBook(new Book("Yuska","How to become millioner"));
-       repository.addBook(new Book("James Bond","QAQA SALAM"));
+        repository.addBook(new Book("Yuska","1C FINANSE"));
+
+       repository.addBook(new Book("James Bond","C++"));
         BookController bookController = new BookController(repository);
 
         var app = Javalin.create(config -> {
             config.routes.get("/", ctx -> ctx.result("Hello my friend it's my server"));
             config.routes.get("/books",bookController::getBooks);
             config.routes.get("/books/findById/{id}",bookController::getBookById);
+            config.routes.get("/books/findByAuthor/{author}",bookController::getAllByAuthor);
 
 
 

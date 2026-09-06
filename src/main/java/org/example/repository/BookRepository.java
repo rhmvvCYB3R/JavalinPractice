@@ -23,12 +23,13 @@ public class BookRepository {
     }
 
     public List<Book> getAllByAuthor(String author){
+        List<Book> result = new ArrayList<>();
         for(Book book : books){
             if(book.getAuthor().toLowerCase().equals(author.toLowerCase())){
-                return books;
+                result.add(book);
             }
         }
-        return null;
+        return result;
     }
 
 

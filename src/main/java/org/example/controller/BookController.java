@@ -32,6 +32,12 @@ public class BookController {
     }
     public void getAllByAuthor(Context ctx){
         String authorPars = ctx.pathParam("author");
+        List <Book> books = repository.getAllByAuthor(authorPars);
+        if (books!=null){
+            ctx.json(books).status(200);
+        }else{
+            ctx.result("Not Found!").status(200);
+        }
 
     }
 
